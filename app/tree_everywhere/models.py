@@ -1,8 +1,7 @@
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from app.account.models import Account
+from app.account.models import Account, CustomUser
 from setup.models import TimeStampMixin
 
 
@@ -23,7 +22,7 @@ class Tree(TimeStampMixin):
 class PlantedTree(TimeStampMixin):
     age = models.IntegerField(blank=False, null=False)
     planted_at = models.DateTimeField(auto_now_add=True)
-    user = models.ForeignKey(User, default=None, on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     tree = models.ForeignKey(Tree, default=None, on_delete=models.CASCADE)
     account = models.ForeignKey(Account, default=None, on_delete=models.CASCADE)
     location = models.DecimalField(decimal_places=2, max_digits=5, blank=False, null=False)

@@ -3,7 +3,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('app.tree_everywhere.urls')),
+    path('', include('app.account.urls')),
+    path('tree', include('app.tree_everywhere.urls')),
 ]
 
 admin.site.site_header = 'YouShop Admin'

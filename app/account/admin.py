@@ -1,3 +1,26 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
+from django.contrib.auth.models import Group
 
-# Register your models here.
+from .forms import CustomUserCreationForm, CustomUserChangeForm
+from .models import CustomUser, Account
+
+
+class CustomUserAdmin(UserAdmin):
+    add_form = CustomUserCreationForm
+    form = CustomUserChangeForm
+    model = CustomUser
+    list_display = ['username', 'about','joined']
+    fieldsets = (
+        (None, {'fields': ('first_name', 'username', 'about', 'joined')}),
+    )
+    readonly_fields = ('joined',)
+
+
+class AccountAdmin(admin.ModelAdmin):
+    model = Account
+
+
+admin.site.register(CustomUser, CustomUserAdmin)
+admin.site.register(Account, AccountAdmin)
+admin.site.unregister(Group)

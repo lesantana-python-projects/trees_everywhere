@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import TreeList
+
+from app.tree_everywhere.views import IndexView
 
 urlpatterns = [
-    path('tree', TreeList.as_view(), name="tree"),
+    path('', IndexView.as_view(), name='home'),
 ]
