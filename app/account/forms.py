@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
-from .models import CustomUser
+from .models import CustomUser, Account
 
 
 class CustomUserCreationForm(UserCreationForm):
@@ -18,3 +18,4 @@ class CustomUserChangeForm(UserChangeForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='User')
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
+    account = forms.ModelChoiceField(Account.objects.all())

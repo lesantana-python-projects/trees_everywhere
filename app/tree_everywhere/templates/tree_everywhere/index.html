@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block main %}
 olá, {{ request.user.username }}
-</body>
-</html>
+<br/>
+<a href="{% url 'tree_everywhere_plant' %}"> Plant </a>
+{% endblock %}

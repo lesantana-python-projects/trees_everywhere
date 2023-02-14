@@ -25,7 +25,8 @@ class PlantedTree(TimeStampMixin):
     user = models.ForeignKey(CustomUser, default=None, on_delete=models.CASCADE)
     tree = models.ForeignKey(Tree, default=None, on_delete=models.CASCADE)
     account = models.ForeignKey(Account, default=None, on_delete=models.CASCADE)
-    location = models.DecimalField(decimal_places=2, max_digits=5, blank=False, null=False)
+    latitude = models.DecimalField(decimal_places=4, max_digits=10, blank=False, null=False)
+    longitude = models.DecimalField(decimal_places=4, max_digits=10, blank=False, null=False)
 
     def __str__(self):
         return str(self.age)

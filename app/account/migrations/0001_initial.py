@@ -52,8 +52,7 @@ class Migration(migrations.Migration):
                 ('created_at', models.DateTimeField(auto_now_add=True, verbose_name='Created at')),
                 ('updated_at', models.DateTimeField(auto_now=True, verbose_name='Updated at')),
                 ('name', models.CharField(max_length=255, unique=True)),
-                ('active', models.BooleanField(default=True)),
-                ('users', models.ManyToManyField(to=settings.AUTH_USER_MODEL)),
+                ('active', models.BooleanField(default=True))
             ],
             options={
                 'verbose_name': 'Account',

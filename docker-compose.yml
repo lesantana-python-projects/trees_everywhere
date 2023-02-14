@@ -1,8 +1,24 @@
 version: "3.8"
 
 services:
+  web:
+    build: .
+    image: django
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    container_name: web
+    volumes:
+      - ./:/opt
+    ports:
+      - "8000:8000"
+    depends_on:
+      - database
+    networks:
+      - backend
+
   database:
-    container_name: admin-database
+    container_name: database
     image: postgres:14
     environment:
       - POSTGRES_PASSWORD=postgres

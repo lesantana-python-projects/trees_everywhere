@@ -5,6 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class IndexView(LoginRequiredMixin, View):
 
-    def get(self, request):
+    @staticmethod
+    def get(request):
         data = {'user': request.user}
         return render(request, 'tree_everywhere/index.html', data)

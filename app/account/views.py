@@ -3,7 +3,6 @@ from django.views import View
 from django.urls import reverse
 from django.http import HttpResponseRedirect
 from django.contrib.auth import authenticate, login
-
 from app.account.forms import LoginForm
 
 
@@ -18,10 +17,13 @@ class LoginView(View):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             password = form.cleaned_data.get('password')
+            account = form.cleaned_data.get('account')
 
             user = authenticate(username=username, password=password)
-            if user:
+            p_account = account.users.filter(id=user.id)
+            if user and p_account.count():
                 login(request, user)
+                request.session['account_id'] = account.id
                 return HttpResponseRedirect(reverse('home'))
 
         data = {

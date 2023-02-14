@@ -20,7 +20,7 @@ class DefaultConfig(metaclass=Singleton):
     SQL_USER = config("SQL_USER", default='postgres', cast=str)
     SQL_PASSWORD = config("SQL_PASSWORD", default='postgres', cast=str)
     SQL_HOST = config("SQL_HOST", default='127.0.0.1', cast=str)
-    SQL_PORT = config("SQL_HOST", default=5432, cast=int)
+    SQL_PORT = config("SQL_PORT", default=5432, cast=int)
 
     LOGGING = {
         'version': 1,

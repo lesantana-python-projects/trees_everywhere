@@ -10,8 +10,8 @@ config_app = get_config()
 
 
 def add_user(apps, schema_editor):
-    User = apps.get_model(*settings.AUTH_USER_MODEL.split('.'))
-    User.objects.create(
+    user = apps.get_model(*settings.AUTH_USER_MODEL.split('.'))
+    user.objects.create(
         first_name='Admin',
         password=make_password(config_app.ADMIN_PASS),
         username='admin',
@@ -21,8 +21,8 @@ def add_user(apps, schema_editor):
 
 
 def remove_user(apps, schema_editor):
-    User = apps.get_model(*settings.AUTH_USER_MODEL.split('.'))
-    User.objects.get(email='admin@youshop.com').delete()
+    user = apps.get_model(*settings.AUTH_USER_MODEL.split('.'))
+    user.objects.get(email='admin@youshop.com').delete()
 
 
 class Migration(migrations.Migration):
