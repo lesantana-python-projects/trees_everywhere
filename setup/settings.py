@@ -1,4 +1,5 @@
 import os
+import sys
 from pathlib import Path
 
 from setup.config import get_config
@@ -64,9 +65,22 @@ DATABASES = {
         'USER': config_app.SQL_USER,
         'PASSWORD': config_app.SQL_PASSWORD,
         'HOST': config_app.SQL_HOST,
-        'PORT': config_app.SQL_PORT,
+        'PORT': config_app.SQL_PORT
     }
 }
+
+if any(test in sys.argv for test in (
+        'test', 'csslint', 'jenkins', 'jslint',
+        'jtest', 'lettuce', 'pep8', 'pyflakes',
+        'pylint', 'sloccount',
+)):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+            'MIGRATE': True
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
