@@ -18,4 +18,4 @@ class CustomUserChangeForm(UserChangeForm):
 class LoginForm(forms.Form):
     username = forms.CharField(label='User')
     password = forms.CharField(label='Password', widget=forms.PasswordInput)
-    account = forms.ModelChoiceField(Account.objects.all())
+    account = forms.ModelChoiceField(Account.objects.filter(active=True).all())
