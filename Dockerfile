@@ -12,7 +12,7 @@ ADD . /code/
 COPY requirements.txt /app
 
 RUN apt-get update
-RUN pip install -r requirements.txt --no-cache-dir
+RUN pip install -r requirements-dev.txt --no-cache-dir
 
 
 EXPOSE 8000
