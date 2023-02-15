@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block menu %}{% include "menu.html" %}{% endblock %}
+{% block main %}
+<form method="post">
+    {% csrf_token %}
+    <div class="row g-3 align-items-center">
+        <div class="col-1">
+            {{ form.age|as_crispy_field }}
+        </div>
+        <div class="col-5">
+            {{ form.tree|as_crispy_field }}
+        </div>
+    </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-3">
+            {{ form.latitude|as_crispy_field }}
+        </div>
+        <div class="col-3">
+            {{ form.longitude|as_crispy_field }}
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

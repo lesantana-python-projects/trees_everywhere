@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block menu %}{% include "menu.html" %}{% endblock %}
+{% block main %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Scientific Name</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for tree in object_list %}
+    <tr>
+        <th scope="row">{{ tree.id }}</th>
+        <td>{{ tree.name }}</td>
+        <td>{{ tree.scientific_name }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

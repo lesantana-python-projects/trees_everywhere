@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block menu %}{% include "menu.html" %}{% endblock %}
+{% block main %}
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Account</th>
+        <th scope="col">User</th>
+        <th scope="col">Latitude</th>
+        <th scope="col">Longitude</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for planted_tree in object_list %}
+    <tr>
+        <th scope="row">{{ planted_tree.id }}</th>
+        <td>{{ planted_tree.tree.name }}</td>
+        <td>{{ planted_tree.age }}</td>
+        <td>{{ planted_tree.account.name }}</td>
+        <td>{{ planted_tree.user.username }}</td>
+        <td>{{ planted_tree.latitude }}</td>
+        <td>{{ planted_tree.longitude }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
