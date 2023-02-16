@@ -10,6 +10,7 @@ WORKDIR /code
 ADD . /code/
 
 COPY requirements.txt /app
+COPY requirements-dev.txt /app
 
 RUN apt-get update
 RUN pip install -r requirements-dev.txt --no-cache-dir
