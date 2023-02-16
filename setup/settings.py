@@ -69,17 +69,10 @@ DATABASES = {
     }
 }
 
-if any(test in sys.argv for test in (
-        'test', 'csslint', 'jenkins', 'jslint',
-        'jtest', 'lettuce', 'pep8', 'pyflakes',
-        'pylint', 'sloccount',
-)):
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': 'db.sqlite3',
-            'MIGRATE': True
-        }
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3'
     }
 
 AUTH_PASSWORD_VALIDATORS = [
